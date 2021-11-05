@@ -1,5 +1,5 @@
-//Implementação para linux - #include <termios.h>
-#include <conio.h>
+//#include <termios.h> //lib linux
+//#include <conio.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,11 +29,11 @@ int main(){
     test = check(10);
     test = check(2);
 
-    getch();
     return 0;
 }
 
 int check(int n){
+//FIXME While de verificação não funciona caso a lista esteja vazia
     
     Node *temp;
     int r=0;
@@ -84,6 +84,7 @@ int addL1(int n){
     return 0;
 }
 
+
 int addL2(int n){
 
     if(n<=0){
@@ -95,13 +96,13 @@ int addL2(int n){
     newNode -> item = n;
     newNode -> link = NULL;
 
-    if(l1 == NULL){
-        l1 = newNode;
+    if(l2 == NULL){
+        l2 = newNode;
         return 0;
         //Primeiro item da lista
     }
     
-    Node *lastNode = l1;
+    Node *lastNode = l2;
     while(lastNode->link != NULL){
         lastNode = lastNode->link;
     }
