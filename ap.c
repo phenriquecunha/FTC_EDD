@@ -33,27 +33,30 @@ int main(){
 }
 
 int check(int n){
-//FIXME While de verificação não funciona caso a lista esteja vazia
     
     Node *temp;
     int r=0;
 
     //verificar lista 1
-    temp = l1;
-    while(temp->item != r && temp->link != NULL){
-        temp = temp->link;
+    if(l1 != NULL){
+        temp = l1;
+        while(temp->item != n && temp->link != NULL){
+            temp = temp->link;
+        }
+        if(temp->item == n) r=1;
     }
-    if(temp->item == r) r=1;
 
     //verificar lista 2
-    temp = l2;
-    while(temp->item != r && temp->link != NULL){
-        temp = temp->link;
-    }
-    if(temp->item == r){
-        //verificar se existe nas duas listas
-        if(r)r = 3;
-        else r = 2;
+    if(l2 != NULL){
+        temp = l2;
+        while(temp->item != n && temp->link != NULL){
+            temp = temp->link;
+        }
+        if(temp->item == n){
+            //verificar se existe nas duas listas
+            if(r)r = 3;
+            else r = 2;
+        }
     }
     
     return r;
