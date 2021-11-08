@@ -1,4 +1,4 @@
-//#include <termios.h> //lib linux
+#include <termios.h> //lib linux
 //#include <conio.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -28,6 +28,10 @@ int main(){
     addL1(15);
     test = check(10);
     test = check(2);
+    addL2(10);
+    addL2(11);
+    test = check(10);
+    test = check(11);
 
     return 0;
 }
@@ -113,15 +117,18 @@ int addL2(int n){
     return 0;
 }
 
+Node joinLists(){
+    
+}
 
-// int getch(void){ // Implementação getch para linux
-//     struct termios oldattr, newattr;
-//     int ch;
-//     tcgetattr( STDIN_FILENO, &oldattr );
-//     newattr = oldattr;
-//     newattr.c_lflag &= ~( ICANON | ECHO );
-//     tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
-//     ch = getchar();
-//     tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
-//     return ch;
-// }
+int getch(void){ // Implementação getch para linux
+    struct termios oldattr, newattr;
+    int ch;
+    tcgetattr( STDIN_FILENO, &oldattr );
+    newattr = oldattr;
+    newattr.c_lflag &= ~( ICANON | ECHO );
+    tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
+    ch = getchar();
+    tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
+    return ch;
+}
