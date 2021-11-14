@@ -18,7 +18,7 @@ int check(int n);
 int addL1(int n);
 int addL2(int n);
 int addL3(int n);
-Node joinLists();
+void joinLists(void);
 
 int main(){
 
@@ -33,6 +33,8 @@ int main(){
     addL2(11);
     test = check(10);
     test = check(11);
+
+    joinLists();
 
     return 0;
 }
@@ -131,7 +133,7 @@ int addL3(int n){
     if(l3 == NULL){
         l3 = newNode;
         return 0;
-        //cdPrimeiro item da lista
+        //Primeiro item da lista
     }
     
     Node *lastNode = l3;
@@ -142,18 +144,23 @@ int addL3(int n){
     return 0;
 }
 
-Node joinLists(){
-    
+void joinLists(void){
+    Node *temp;
+    int r;
     // l3 = (Node *)malloc(sizeof(Node));
     // l3 -> item = NULL;
     // l3 -> link = NULL;
-
-    while(l1->link != NULL){
-        addL3(l1->item);
+    temp = l1;
+    while(temp->link != NULL){
+        r = check(temp->item);
+        if(r != 3) addL3(temp->item);
+        temp = temp->link;
     }
-    while(l2->link != NULL){
-
-        addL3(l2->item);
+    temp = l2;
+    while(temp->link != NULL){
+        r = check(temp->item);
+        if(r != 3) addL3(l2->item);
+        temp = temp->link;
     }
 }
 
