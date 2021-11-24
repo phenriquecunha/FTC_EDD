@@ -18,21 +18,10 @@ int check(int n);
 int addL1(int n);
 int addL2(int n);
 int addL3(int n);
+int del();
 void joinLists(void);
 
 int main(){
-
-    int test;
-
-    addL1(5);
-    addL1(10);
-    addL1(15);
-    test = check(10);
-    test = check(2);
-    addL2(10);
-    addL2(11);
-    test = check(10);
-    test = check(11);
 
     joinLists();
 
@@ -142,6 +131,25 @@ int addL3(int n){
     }
     lastNode->link = newNode;
     return 0;
+}
+
+int del(){
+    Node *temp;
+    int smaller;
+
+    if(l3 == NULL) return -1;
+
+    smaller = l3->item;
+    temp = l3;
+    
+    while(temp->link != NULL){
+        if(temp->item < smaller){
+            smaller = temp->item;
+        }
+        temp = temp->link;
+    }
+
+    return smaller;
 }
 
 void joinLists(void){
